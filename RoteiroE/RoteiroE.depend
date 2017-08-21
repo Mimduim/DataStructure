@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1503034271 source:c:\users\mimduim\documents\codeblocks\roteiroe\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cstdlib>
+
+1503197487 source:c:\users\mimduim\documents\codeblocks\aed\roteiroe\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cstdlib>
+

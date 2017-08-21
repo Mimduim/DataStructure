@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1502676849 source:c:\users\mimduim\documents\codeblocks\roteiros\main.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+

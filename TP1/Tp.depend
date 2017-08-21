@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1502503715 source:c:\users\mimduim\documents\codeblocks\tp\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<cstdio>
+
+1502761188 source:c:\users\mimduim\documents\codeblocks\aed\tp1\main.cpp
+	"BaseLib.h"
+	"FileReader.cpp"
+
+1502761141 c:\users\mimduim\documents\codeblocks\aed\tp1\filereader.h
+	<iostream>
+	<fstream>
+	<string>
+
+1502752009 c:\users\mimduim\documents\codeblocks\aed\tp1\baselib.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<cstdlib>
+	<cstdio>
+	<string>
+
+1502761141 c:\users\mimduim\documents\codeblocks\aed\tp1\filereader.cpp
+	"FileReader.h"
+
