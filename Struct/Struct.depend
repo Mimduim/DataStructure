@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1503325228 source:c:\users\usuario\documents\codeblocks\struct\main.cpp
+	<iostream>
+	<fstream>
+	<cstdio>
+	<cstdlib>
+	"Pessoa.h"
+
+1503325321 c:\users\usuario\documents\codeblocks\struct\pessoa.h
+	<string>
+

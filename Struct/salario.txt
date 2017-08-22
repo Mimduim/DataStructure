@@ -1,0 +1,3 @@
+3,Joaquim Fernandes,4.5,4216.5
+2,Marcela Araujo,3.7,3466.9
+6,Murilo Paulo,2,1874
