@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1503627480 source:c:\users\mimduim\documents\codeblocks\listageneral\main.cpp
+	<iostream>
+	"Lista.h"
+
+1503620554 c:\users\mimduim\documents\codeblocks\listageneral\listageneral.cpp
+	"ListaGeneral.h"
+
+1503620495 c:\users\mimduim\documents\codeblocks\listageneral\listageneral.h
+	"Celula.h"
+
+1503620791 c:\users\mimduim\documents\codeblocks\listageneral\celula.h
+
+1503627579 c:\users\mimduim\documents\codeblocks\listageneral\lista.h
+

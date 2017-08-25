@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1503619110 source:c:\users\mimduim\documents\codeblocks\listase\main.cpp
+	<iostream>
+	"Lista.cpp"
+
+1503277122 c:\users\mimduim\documents\codeblocks\listase\lista.h
+	"Celula.h"
+
+1503276451 c:\users\mimduim\documents\codeblocks\listase\celula.h
+
+1503619150 c:\users\mimduim\documents\codeblocks\listase\lista.cpp
+	"Lista.h"
+
