@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1503198740 source:c:\users\mimduim\documents\codeblocks\readbin\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<cstdio>
+	<conio.h>
+	"Aluno.h"
+
+1503198191 c:\users\mimduim\documents\codeblocks\readbin\aluno.h
+	<iostream>
+

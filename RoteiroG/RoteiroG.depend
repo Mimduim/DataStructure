@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1503715339 source:c:\users\mimduim\documents\codeblocks\datastructure\roteirog\main.cpp
+	<iostream>
+	<string>
+	"Lista.cpp"
+
+1503715052 c:\users\mimduim\documents\codeblocks\datastructure\roteirog\lista.cpp
+	"Lista.h"
+
+1503712251 c:\users\mimduim\documents\codeblocks\datastructure\roteirog\lista.h
+	"Celula.h"
+
+1503695263 c:\users\mimduim\documents\codeblocks\datastructure\roteirog\celula.h
+
