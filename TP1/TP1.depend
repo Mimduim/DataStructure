@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1504060133 source:c:\users\mimduim\documents\codeblocks\datastructure\tp1\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<cstdio>
+	"Lista.cpp"
+
+1504060179 c:\users\mimduim\documents\codeblocks\datastructure\tp1\lista.cpp
+	"Lista.h"
+
+1504058883 c:\users\mimduim\documents\codeblocks\datastructure\tp1\lista.h
+	"Celula.h"
+
+1504039818 c:\users\mimduim\documents\codeblocks\datastructure\tp1\celula.h
+
