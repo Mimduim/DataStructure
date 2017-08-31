@@ -13,41 +13,9 @@ void Lista::inicializar(int lin, int colun)
     primeiro->direita = primeiro;
     primeiro->baixo = primeiro;
 
-    /*
-    // Matriz está vazia, gera o primeiro elemento da linha da matriz/lista
-    nova = new Celula();
-    nova->valor = NULL;
-    nova->linha = -1;
-    nova->coluna = NULL;
-    nova->direita = primeiro;
-    primeiro->direita = nova;
-
-    */
     // Laço de alocação da linha da matriz/lista
     int count = 0;
     while (count != lin)
-    {
-        Celula* aux = primeiro;
-        while (aux->direita != primeiro)
-        {
-            aux = aux->direita;
-        }
-
-        nova = new Celula();
-        nova->valor = NULL;
-        nova->linha = -1;
-        nova->coluna = NULL;
-
-        nova->direita = primeiro;
-        nova->baixo = nova;
-        aux->direita = nova;
-
-        count++;
-    }
-
-    // Laço de alocação da coluna da matriz/lista
-    count = 0;
-    while (count != colun)
     {
         Celula* aux = primeiro;
         while (aux->baixo != primeiro)
@@ -57,12 +25,45 @@ void Lista::inicializar(int lin, int colun)
 
         nova = new Celula();
         nova->valor = NULL;
+        nova->linha = -1;
+        nova->coluna = NULL;
+
+        Lista lista;
+        lista.primeiro = nova;
+        lista.primeiro->baixo = primeiro;
+        lista.primeiro->direita = lista.primeiro;
+        aux->baixo = lista.primeiro;
+        // nova->baixo = primeiro;
+        // nova->direita = nova;
+        // aux->baixo = nova;
+
+        count++;
+    }
+
+    // Laço de alocação da coluna da matriz/lista
+    count = 0;
+    while (count != colun)
+    {
+        Celula* aux = primeiro;
+        while (aux->direita != primeiro)
+        {
+            aux = aux->direita;
+        }
+
+        nova = new Celula();
+        nova->valor = NULL;
         nova->linha = NULL;
         nova->coluna = -1;
 
-        nova->baixo = primeiro;
-        nova->direita = nova;
-        aux->baixo = nova;
+        Lista lista;
+        lista.primeiro = nova;
+        lista.primeiro->direita = primeiro;
+        lista.primeiro->baixo = lista.primeiro;
+        aux->direita = lista.primeiro;
+
+        // nova->direita = primeiro;
+        //nova->baixo = nova;
+        //aux->direita = nova;
 
         count++;
     }
@@ -136,25 +137,145 @@ void Lista::inserir(int lin, int colun, float val)
     }
 }
 
+
+Lista Lista::soma(Lista listaA, Lista listaB)
+{
+    Lista listaC;
+    listaC.inicializar(listaA.Linha,listaB.Coluna);
+    if (listaA.Linha != listaB.Linha && listaA.Coluna != listaB.Coluna)
+    {
+        std::cout<<"Impossivel operacao de SOMA!!!";
+
+    }
+    else
+    {
+        Celula* A = new Celula();
+        Celula* B = new Celula();
+        Celula* C = new Celula();
+        Celula* tempA = new Celula();
+        Celula* tempB = new Celula();
+
+        A = listaA.primeiro->baixo;
+        B = listaB.primeiro->baixo;
+        tempA = A;
+        tempB = B;
+
+
+        for (int i=0; i<Linha; i++)
+        {
+            while(A->direita != tempA)
+            {
+                A = A->direita;
+                B = B->direita;
+                C = new Celula();
+                C->valor = A->valor + B->valor;
+                C->linha = A->linha;
+                C->coluna = A->coluna;
+                listaC.inserir(C->linha, C->coluna, C->valor);
+            }
+
+            A = tempA->baixo;
+            B = tempB->baixo;
+            tempA = A;
+            tempB = B;
+        }
+        return listaC;
+    }
+}
+
+Lista Lista::multi(Lista listaA, Lista listaB)
+{
+    Lista listaC;
+    listaC.inicializar(listaA.Linha,listaB.Coluna);
+    if (listaA.Coluna != listaB.Linha)
+    {
+        std::cout<<"Impossivel operacao de MULTIPLICACAO!!!";
+
+    }
+    else
+    {
+        Celula* A = new Celula();
+        Celula* B = new Celula();
+        Celula* C = new Celula();
+        Celula* tempA = new Celula();
+        Celula* tempB = new Celula();
+
+        A = listaA.primeiro->baixo;
+        B = listaB.primeiro->baixo;
+        tempA = A;
+        tempB = B;
+
+
+        for (int i=0; i<Linha; i++)
+        {
+            while(A->direita != tempA)
+            {
+                A = A->direita;
+                B = B->direita;
+                C = new Celula();
+                C->valor = A->valor * B->valor;
+                C->linha = A->linha;
+                C->coluna = A->coluna;
+                listaC.inserir(C->linha, C->coluna, C->valor);
+            }
+
+            A = tempA->baixo;
+            B = tempB->baixo;
+            tempA = A;
+            tempB = B;
+        }
+        return listaC;
+    }
+}
+
+void Lista::economia()
+{
+    Celula* aux = new Celula();
+    Celula* temp = new Celula();
+    aux = primeiro->baixo;
+    temp = aux;
+    int count=0;
+    double bytes=0;
+
+    for (int i=0; i<Linha; i++)
+    {
+        while(aux->direita != temp)
+        {
+            aux = aux->direita;
+            count++;
+        }
+        aux = temp->baixo;
+        temp = aux;
+    }
+
+    bytes = (Linha * Coluna) * sizeof(Celula);
+    std::cout<< "Matriz possui "<<bytes<< " de bytes sem alocacao dinamica.\n";
+    count = count * sizeof(Celula);
+    std::cout<< "Matriz possui "<<count<< " de bytes com alocacao dinamica.\n";
+    count = bytes - count;
+    std::cout<< "Matriz possui "<<count<< " de bytes com economia.\n";
+
+}
+
 void Lista::imprimirBase()
 {
     Celula* aux = primeiro;
     std::cout<<" ";
     while(aux->direita != primeiro)
     {
-        std::cout<<""<<aux->linha;
+        std::cout<<""<<aux->coluna;
         aux = aux->direita;
     }
-    std::cout<< ""<<aux->linha;
+    std::cout<< ""<<aux->coluna;
     std::cout<<"\n";
 
     aux = primeiro->baixo;
     while(aux->baixo != primeiro)
     {
-        std::cout<<" "<<aux->coluna<< " \n";
+        std::cout<<" "<<aux->linha<< " \n";
         aux = aux->baixo;
     }
-    std::cout<<" "<<aux->coluna<< " \n";
+    std::cout<<" "<<aux->linha<< " \n";
     std::cout<<"\n";
 }
 
@@ -178,23 +299,60 @@ void Lista::imprimirMatriz()
     Celula* aux = new Celula();
     Celula* temp = new Celula();
 
-
     aux = primeiro->baixo;
     temp = aux;
 
     for (int i=0; i<Linha; i++)
     {
-
         while(aux->direita != temp)
         {
             aux = aux->direita;
-            std::cout<<"\t"<<aux->valor<<"\t";
+            std::cout<<"\t"<<'|'<<aux->linha<<','<<aux->coluna<<'|'<<','<<aux->valor<<"\t";
         }
-        std::cout<<"\n";
 
         aux = temp->baixo;
         temp = aux;
+        std::cout<<"\n";
     }
+    std::cout<<"\n";
+}
+
+void Lista::remover(int linha, int coluna)
+{
+    Celula *anterior = primeiro->baixo;
+    Celula *atual = anterior->direita;
+    Celula *inicio = anterior;
+
+    for (int i=0; i<Linha; i++)
+    {
+
+        while(atual->direita != inicio)
+        {
+            if(atual->linha == linha && atual->coluna == coluna)
+            {
+                anterior->direita = atual->direita;
+                delete atual;
+                break;
+            }
+            else
+            {
+                anterior = atual;
+                atual = atual->direita;
+            }
+        }
+
+        if(atual->linha == linha && atual->coluna == coluna)
+        {
+            anterior->direita = atual->direita;
+            delete atual;
+        }
+
+        anterior = inicio->baixo;
+        atual = anterior->direita;
+        inicio = anterior;
+
+    }
+
 }
 
 

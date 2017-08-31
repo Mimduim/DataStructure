@@ -7,11 +7,12 @@ struct Lista
     int Linha, Coluna;
     void inicializar(int linha, int coluna);
     void inserir(int linha, int coluna, float valor);
-    void inserirAoFinal(int elemento);
-    void inserirNoInicio(int elemento);
-    bool vazia();
     void imprimirBase();
     void imprimirValor();
     void imprimirMatriz();
+    void economia();
+    void remover(int linha, int coluna);
+    Lista soma(Lista listaA, Lista listaB);
+    Lista multi(Lista listaA, Lista listaB);
 };
 #endif // LISTA_H_INCLUDED

@@ -41,7 +41,16 @@
 		<Unit filename="Lista.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="Matriz.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Matriz.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="MatrizA.txt">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="MatrizB.txt">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />

@@ -1,16 +1,23 @@
 # depslib dependency file v1.0
-1504060133 source:c:\users\mimduim\documents\codeblocks\datastructure\tp1\main.cpp
+1504145206 source:c:\users\mimduim\documents\codeblocks\datastructure\tp1\main.cpp
 	<iostream>
 	<fstream>
 	<cstdlib>
 	<cstdio>
-	"Lista.cpp"
+	"Matriz.cpp"
 
-1504060179 c:\users\mimduim\documents\codeblocks\datastructure\tp1\lista.cpp
+1504145656 c:\users\mimduim\documents\codeblocks\datastructure\tp1\lista.cpp
 	"Lista.h"
 
-1504058883 c:\users\mimduim\documents\codeblocks\datastructure\tp1\lista.h
+1504145165 c:\users\mimduim\documents\codeblocks\datastructure\tp1\lista.h
 	"Celula.h"
 
 1504039818 c:\users\mimduim\documents\codeblocks\datastructure\tp1\celula.h
+
+1504145130 c:\users\mimduim\documents\codeblocks\datastructure\tp1\matriz.cpp
+	"Matriz.h"
+	"Lista.cpp"
+
+1504145128 c:\users\mimduim\documents\codeblocks\datastructure\tp1\matriz.h
+	"Lista.h"
 
