@@ -301,13 +301,26 @@ void Lista::imprimirMatriz()
 
     aux = primeiro->baixo;
     temp = aux;
-
-    for (int i=0; i<Linha; i++)
+    int j;
+    for (int i=1; i<=Linha; i++)
     {
+        j = 1;
         while(aux->direita != temp)
         {
             aux = aux->direita;
-            std::cout<<"\t"<<'|'<<aux->linha<<','<<aux->coluna<<'|'<<','<<aux->valor<<"\t";
+            while (aux->coluna != j)
+            {
+                std::cout<<" "<<'|'<<i<<','<<j<<'|'<<','<<0<<"  \t";
+                j++;
+            }
+            j = aux->coluna +1;
+            std::cout<<" "<<'|'<<aux->linha<<','<<aux->coluna<<'|'<<','<<aux->valor<<" \t";
+        }
+
+        while (j < 5)
+        {
+            std::cout<<" "<<'|'<<i<<','<<j<<'|'<<','<<0<<"  \t";
+            j++;
         }
 
         aux = temp->baixo;

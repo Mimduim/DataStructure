@@ -8,8 +8,8 @@ struct Matriz{
     void inicialize(int linha, int coluna);
     void leMatriz(int linha, int coluna, float valor);
     void imprimeMatriz();
-    void removeElemento(int linha, int coluna, Matriz matriz);
-    void calculoEconomiaBytes(Matriz matriz);
+    void removeElemento(int linha, int coluna);
+    void  calculoEconomiaBytes();
 };
 
 

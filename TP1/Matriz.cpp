@@ -29,11 +29,11 @@ Matriz Matriz::multiplicaMatriz(Matriz A, Matriz B)
     return C;
 }
 
-void Matriz::calculoEconomiaBytes(Matriz matriz){
-    matriz.lista.economia();
+ void Matriz::calculoEconomiaBytes(){
+    lista.economia();
 }
 
-void Matriz::removeElemento(int linha, int coluna, Matriz matriz){
-    matriz.lista.remover(linha,coluna);
+void Matriz::removeElemento(int linha, int coluna){
+    lista.remover(linha,coluna);
 }
 

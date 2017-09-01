@@ -59,25 +59,28 @@ int main()
     Matriz B;
     B = readFile(dir2);
 
-
     cout<< "Matriz A \n\n";
     A.imprimeMatriz();
+
     cout<< "\nMatriz B \n\n";
     B.imprimeMatriz();
 
+    cout<< "\nMatriz C (A + B) \n\n";
     Matriz C;
     C = C.somaMatriz(A,B);
-    cout<< "\nMatriz C (A + B) \n\n";
     C.imprimeMatriz();
 
+    cout<< "\nMatriz D (A * C) \n\n";
     Matriz D;
     D = D.multiplicaMatriz(A,B);
-    cout<< "\nMatriz D (A * C) \n\n";
     D.imprimeMatriz();
 
-    A.lista.economia();
+    cout<< "\nMatriz D com n-esimo elemento removido \n\n";
+    D.removeElemento(1,1);
+    D.imprimeMatriz();
 
-    C.removeElemento(1,1,C);
-    C.imprimeMatriz();
+    cout<< "\nMatriz A economia \n\n";
+    A.calculoEconomiaBytes();
+
     return 0;
 }
