@@ -1,8 +1,17 @@
+/*
+Aluno: Paulo Henrique Rodrigues da Cunha Santos
+Nº: 0022012
+Disciplina: Algoritmos e Estruturas de Dados 2
+Trabalho Pratico 1
+data: 03/09/2017
+hora: 01:00
+*/
 #include "Lista.h"
 
+// Função que inicializa
 void Lista::inicializar(int lin, int colun)
 {
-    // Gera celula inicial da matriz/lista
+    // Gera celula principal da matriz/lista
     Celula* nova = new Celula();
     Linha = lin;
     Coluna = colun;
@@ -33,10 +42,6 @@ void Lista::inicializar(int lin, int colun)
         lista.primeiro->baixo = primeiro;
         lista.primeiro->direita = lista.primeiro;
         aux->baixo = lista.primeiro;
-        // nova->baixo = primeiro;
-        // nova->direita = nova;
-        // aux->baixo = nova;
-
         count++;
     }
 
@@ -54,21 +59,18 @@ void Lista::inicializar(int lin, int colun)
         nova->valor = NULL;
         nova->linha = NULL;
         nova->coluna = -1;
-
+        // Aloca uma lista para cada elemento correspondente a linha e coluna
+        //da estrutura de movimentação e orientação
         Lista lista;
         lista.primeiro = nova;
         lista.primeiro->direita = primeiro;
         lista.primeiro->baixo = lista.primeiro;
         aux->direita = lista.primeiro;
-
-        // nova->direita = primeiro;
-        //nova->baixo = nova;
-        //aux->direita = nova;
-
         count++;
     }
 }
 
+// Função que insere elementos na matriz
 void Lista::inserir(int lin, int colun, float val)
 {
     // Celula nova a ser inserida na Matriz
@@ -137,15 +139,15 @@ void Lista::inserir(int lin, int colun, float val)
     }
 }
 
-
+// Função para soma
 Lista Lista::soma(Lista listaA, Lista listaB)
 {
     Lista listaC;
     listaC.inicializar(listaA.Linha,listaB.Coluna);
-    if (listaA.Linha != listaB.Linha && listaA.Coluna != listaB.Coluna)
+    if (listaA.Linha != listaB.Linha || listaA.Coluna != listaB.Coluna)
     {
-        std::cout<<"Impossivel operacao de SOMA!!!";
-
+        std::cout<<"Impossivel operacao de SOMA!!!\nMatriz C Nula\n\n";
+        return listaC;
     }
     else
     {
@@ -155,13 +157,14 @@ Lista Lista::soma(Lista listaA, Lista listaB)
         Celula* tempA = new Celula();
         Celula* tempB = new Celula();
 
+        // Localização e orientação na matriz
         A = listaA.primeiro->baixo;
         B = listaB.primeiro->baixo;
         tempA = A;
         tempB = B;
 
 
-        for (int i=0; i<Linha; i++)
+        for (int i=1; i<=Linha; i++)
         {
             while(A->direita != tempA)
             {
@@ -173,7 +176,6 @@ Lista Lista::soma(Lista listaA, Lista listaB)
                 C->coluna = A->coluna;
                 listaC.inserir(C->linha, C->coluna, C->valor);
             }
-
             A = tempA->baixo;
             B = tempB->baixo;
             tempA = A;
@@ -189,40 +191,58 @@ Lista Lista::multi(Lista listaA, Lista listaB)
     listaC.inicializar(listaA.Linha,listaB.Coluna);
     if (listaA.Coluna != listaB.Linha)
     {
-        std::cout<<"Impossivel operacao de MULTIPLICACAO!!!";
-
+        std::cout<<"Impossivel operacao de MULTIPLICACAO!!!\nMatriz C Nula\n\n";
+        return listaC;
     }
     else
     {
         Celula* A = new Celula();
         Celula* B = new Celula();
-        Celula* C = new Celula();
         Celula* tempA = new Celula();
         Celula* tempB = new Celula();
 
         A = listaA.primeiro->baixo;
-        B = listaB.primeiro->baixo;
+        B = listaB.primeiro->direita;
         tempA = A;
         tempB = B;
 
-
-        for (int i=0; i<Linha; i++)
+        float aux = 0;
+     // Lações e iterações para movimentar a matriz para direita e para baixo
+     // Caso não exista tal elemento correspondente para se multiplicar
+     // a celula fica no aguardo enquanto a outra da lista adjacente interage
+        for (int k=1; k<=listaA.Linha; k++)
         {
-            while(A->direita != tempA)
+            for (int i=1; i<=listaB.Coluna; i++)
             {
-                A = A->direita;
-                B = B->direita;
-                C = new Celula();
-                C->valor = A->valor * B->valor;
-                C->linha = A->linha;
-                C->coluna = A->coluna;
-                listaC.inserir(C->linha, C->coluna, C->valor);
+                for (int j=1; j<=listaA.Linha; j++)
+                {
+                    if (A->direita->coluna < B->baixo->linha)
+                    {
+                        aux += 0;
+                        A = A->direita;
+                    }
+                    else if (A->direita->coluna > B->baixo->linha)
+                    {
+                        aux += 0;
+                        B = B->baixo;
+                    }
+                    else
+                    {
+                        A = A->direita;
+                        B = B->baixo;
+                        aux += A->valor * B->valor;
+                    }
+                }
+                listaC.inserir(k, i, aux);
+                aux = 0;
+                A = tempA;
+                B = tempB->direita;
+                tempB = B;
             }
-
-            A = tempA->baixo;
-            B = tempB->baixo;
-            tempA = A;
+            B = listaB.primeiro->direita;
             tempB = B;
+            A = tempA->baixo;
+            tempA = A;
         }
         return listaC;
     }
@@ -316,13 +336,12 @@ void Lista::imprimirMatriz()
             j = aux->coluna +1;
             std::cout<<" "<<'|'<<aux->linha<<','<<aux->coluna<<'|'<<','<<aux->valor<<" \t";
         }
-
-        while (j < 5)
+        // Caso a celula não exista e precise imprimir mais zeros
+        while (j < Coluna+1)
         {
             std::cout<<" "<<'|'<<i<<','<<j<<'|'<<','<<0<<"  \t";
             j++;
         }
-
         aux = temp->baixo;
         temp = aux;
         std::cout<<"\n";
@@ -338,7 +357,6 @@ void Lista::remover(int linha, int coluna)
 
     for (int i=0; i<Linha; i++)
     {
-
         while(atual->direita != inicio)
         {
             if(atual->linha == linha && atual->coluna == coluna)
@@ -353,19 +371,15 @@ void Lista::remover(int linha, int coluna)
                 atual = atual->direita;
             }
         }
-
         if(atual->linha == linha && atual->coluna == coluna)
         {
             anterior->direita = atual->direita;
             delete atual;
         }
-
         anterior = inicio->baixo;
         atual = anterior->direita;
         inicio = anterior;
-
     }
-
 }
 
 

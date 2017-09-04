@@ -1,3 +1,11 @@
+/*
+Aluno: Paulo Henrique Rodrigues da Cunha Santos
+Nº: 0022012
+Disciplina: Algoritmos e Estruturas de Dados 2
+Trabalho Pratico 1
+data: 03/09/2017
+hora: 01:00
+*/
 #ifndef MATRIZ_H_INCLUDED
 #define MATRIZ_H_INCLUDED
 #include "Lista.h"
@@ -9,8 +17,6 @@ struct Matriz{
     void leMatriz(int linha, int coluna, float valor);
     void imprimeMatriz();
     void removeElemento(int linha, int coluna);
-    void  calculoEconomiaBytes();
+    void calculoEconomiaBytes();
 };
-
-
 #endif // MATRIZ_H_INCLUDED

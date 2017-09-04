@@ -1,3 +1,11 @@
+/*
+Aluno: Paulo Henrique Rodrigues da Cunha Santos
+Nº: 0022012
+Disciplina: Algoritmos e Estruturas de Dados 2
+Trabalho Pratico 1
+data: 03/09/2017
+hora: 01:00
+*/
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -11,18 +19,15 @@ Matriz readFile(char *diretorio)
     Matriz matriz;
     ifstream ObjectReader(diretorio,ios_base::in);
     string conteiner;
-    int linha=0,coluna=0,aux;
+    int linha=0,coluna=0;
     float valor;
 
     if (ObjectReader.is_open())
     {
         getline(ObjectReader, conteiner, ',');
         linha = atoi(conteiner.c_str());
-        getline(ObjectReader, conteiner, ',');
-        coluna = atoi(conteiner.c_str());
         getline(ObjectReader, conteiner);
-        aux = atoi(conteiner.c_str());
-
+        coluna = atoi(conteiner.c_str());
     }
     else cout << "Erro na abertura de arquivo!!" << endl;
 
@@ -30,7 +35,7 @@ Matriz readFile(char *diretorio)
 
     if (ObjectReader.is_open())
     {
-        for (int i=0; i<aux; i++)
+        while (!ObjectReader.eof())
         {
             getline(ObjectReader, conteiner, ',');
             linha = atoi(conteiner.c_str());
@@ -81,6 +86,9 @@ int main()
 
     cout<< "\nMatriz A economia \n\n";
     A.calculoEconomiaBytes();
+
+    cout<< "\nMatriz B economia \n\n";
+    B.calculoEconomiaBytes();
 
     return 0;
 }
