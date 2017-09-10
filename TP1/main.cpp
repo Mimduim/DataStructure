@@ -57,11 +57,9 @@ Matriz readFile(char *diretorio)
 int main()
 {
     char dir[20] = "MatrizA.txt";
-    Matriz A;
-    A = readFile(dir);
-
     char dir2[20] = "MatrizB.txt";
-    Matriz B;
+    Matriz A,B;
+    A = readFile(dir);
     B = readFile(dir2);
 
     cout<< "Matriz A \n\n";
@@ -72,17 +70,31 @@ int main()
 
     cout<< "\nMatriz C (A + B) \n\n";
     Matriz C;
-    C = C.somaMatriz(A,B);
-    C.imprimeMatriz();
+    if (C.verificaSoma(&A,&B) == false)
+    {
+        cout<<"Impossivel operacao de SOMA!!!\n\n";
+    }
+    else
+    {
+        C = C.somaMatriz(&A,&B);
+        C.imprimeMatriz();
+    }
 
     cout<< "\nMatriz D (A * C) \n\n";
     Matriz D;
-    D = D.multiplicaMatriz(A,B);
-    D.imprimeMatriz();
+    if (D.verificaMulti(&A,&B) == false)
+    {
+        cout<<"Impossivel operacao de MULTIPLICACAO!!!\n\n";
+    }
+    else
+    {
+        D = D.multiplicaMatriz(&A,&B);
+        D.imprimeMatriz();
+    }
 
-    cout<< "\nMatriz D com n-esimo elemento removido \n\n";
-    D.removeElemento(1,1);
-    D.imprimeMatriz();
+    cout<< "\nMatriz A com n-esimo elemento removido \n\n";
+    A.removeElemento(1,1);
+    A.imprimeMatriz();
 
     cout<< "\nMatriz A economia \n\n";
     A.calculoEconomiaBytes();

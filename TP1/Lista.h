@@ -20,7 +20,7 @@ struct Lista
     void imprimirMatriz();
     void economia();
     void remover(int linha, int coluna);
-    Lista soma(Lista listaA, Lista listaB);
-    Lista multi(Lista listaA, Lista listaB);
+    Lista soma(Lista *listaA, Lista *listaB);
+    Lista multi(Lista *listaA, Lista *listaB);
 };
 #endif // LISTA_H_INCLUDED

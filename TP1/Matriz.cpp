@@ -23,17 +23,17 @@ void Matriz::imprimeMatriz()
     lista.imprimirMatriz();
 }
 
-Matriz Matriz::somaMatriz(Matriz A, Matriz B)
+Matriz Matriz::somaMatriz(Matriz *A, Matriz *B)
 {
     Matriz C;
-    C.lista = A.lista.soma(A.lista,B.lista);
+    C.lista = C.lista.soma(&A->lista,&B->lista);
     return C;
 }
 
-Matriz Matriz::multiplicaMatriz(Matriz A, Matriz B)
+Matriz Matriz::multiplicaMatriz(Matriz *A, Matriz *B)
 {
     Matriz C;
-    C.lista = A.lista.multi(A.lista,B.lista);
+    C.lista = C.lista.multi(&A->lista,&B->lista);
     return C;
 }
 
@@ -46,4 +46,20 @@ void Matriz::removeElemento(int linha, int coluna)
 {
     lista.remover(linha,coluna);
 }
+
+ bool Matriz::verificaSoma(Matriz *A, Matriz *B){
+
+     if (A->lista.Linha != B->lista.Linha || A->lista.Coluna != B->lista.Coluna)
+        return false;
+     else
+        return true;
+ }
+
+ bool Matriz::verificaMulti(Matriz *A, Matriz *B){
+
+     if (A->lista.Coluna != B->lista.Linha)
+        return false;
+     else
+        return true;
+ }
 

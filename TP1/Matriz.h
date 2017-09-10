@@ -11,12 +11,14 @@ hora: 01:00
 #include "Lista.h"
 struct Matriz{
     Lista lista;
-    Matriz somaMatriz(Matriz A, Matriz B);
-    Matriz multiplicaMatriz(Matriz A, Matriz B);
+    Matriz somaMatriz(Matriz *A, Matriz *B);
+    Matriz multiplicaMatriz(Matriz *A, Matriz *B);
     void inicialize(int linha, int coluna);
     void leMatriz(int linha, int coluna, float valor);
     void imprimeMatriz();
     void removeElemento(int linha, int coluna);
     void calculoEconomiaBytes();
+    bool verificaSoma(Matriz *A, Matriz *B);
+    bool verificaMulti(Matriz *A, Matriz *B);
 };
 #endif // MATRIZ_H_INCLUDED

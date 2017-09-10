@@ -140,17 +140,11 @@ void Lista::inserir(int lin, int colun, float val)
 }
 
 // Função para soma
-Lista Lista::soma(Lista listaA, Lista listaB)
+Lista Lista::soma(Lista *listaA, Lista *listaB)
 {
     Lista listaC;
-    listaC.inicializar(listaA.Linha,listaB.Coluna);
-    if (listaA.Linha != listaB.Linha || listaA.Coluna != listaB.Coluna)
-    {
-        std::cout<<"Impossivel operacao de SOMA!!!\nMatriz C Nula\n\n";
-        return listaC;
-    }
-    else
-    {
+    listaC.inicializar(listaA->Linha,listaB->Coluna);
+
         Celula* A = new Celula();
         Celula* B = new Celula();
         Celula* C = new Celula();
@@ -158,8 +152,8 @@ Lista Lista::soma(Lista listaA, Lista listaB)
         Celula* tempB = new Celula();
 
         // Localização e orientação na matriz
-        A = listaA.primeiro->baixo;
-        B = listaB.primeiro->baixo;
+        A = listaA->primeiro->baixo;
+        B = listaB->primeiro->baixo;
         tempA = A;
         tempB = B;
 
@@ -182,27 +176,21 @@ Lista Lista::soma(Lista listaA, Lista listaB)
             tempB = B;
         }
         return listaC;
-    }
+
 }
 
-Lista Lista::multi(Lista listaA, Lista listaB)
+Lista Lista::multi(Lista *listaA, Lista *listaB)
 {
     Lista listaC;
-    listaC.inicializar(listaA.Linha,listaB.Coluna);
-    if (listaA.Coluna != listaB.Linha)
-    {
-        std::cout<<"Impossivel operacao de MULTIPLICACAO!!!\nMatriz C Nula\n\n";
-        return listaC;
-    }
-    else
-    {
+    listaC.inicializar(listaA->Linha,listaB->Coluna);
+
         Celula* A = new Celula();
         Celula* B = new Celula();
         Celula* tempA = new Celula();
         Celula* tempB = new Celula();
 
-        A = listaA.primeiro->baixo;
-        B = listaB.primeiro->direita;
+        A = listaA->primeiro->baixo;
+        B = listaB->primeiro->direita;
         tempA = A;
         tempB = B;
 
@@ -210,11 +198,11 @@ Lista Lista::multi(Lista listaA, Lista listaB)
      // Lações e iterações para movimentar a matriz para direita e para baixo
      // Caso não exista tal elemento correspondente para se multiplicar
      // a celula fica no aguardo enquanto a outra da lista adjacente interage
-        for (int k=1; k<=listaA.Linha; k++)
+        for (int k=1; k<=listaA->Linha; k++)
         {
-            for (int i=1; i<=listaB.Coluna; i++)
+            for (int i=1; i<=listaB->Coluna; i++)
             {
-                for (int j=1; j<=listaA.Linha; j++)
+                for (int j=1; j<=listaA->Linha; j++)
                 {
                     if (A->direita->coluna < B->baixo->linha)
                     {
@@ -239,13 +227,13 @@ Lista Lista::multi(Lista listaA, Lista listaB)
                 B = tempB->direita;
                 tempB = B;
             }
-            B = listaB.primeiro->direita;
+            B = listaB->primeiro->direita;
             tempB = B;
             A = tempA->baixo;
             tempA = A;
         }
         return listaC;
-    }
+
 }
 
 void Lista::economia()
