@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1504270322 source:c:\users\usuario\documents\codeblocks\datastructure\roteiro h\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Lista.cpp"
+
+1504270490 c:\users\usuario\documents\codeblocks\datastructure\roteiro h\lista.cpp
+	"Lista.h"
+
+1504269473 c:\users\usuario\documents\codeblocks\datastructure\roteiro h\lista.h
+	"Celula.h"
+
+1504269488 c:\users\usuario\documents\codeblocks\datastructure\roteiro h\celula.h
+
+1504536672 source:c:\users\usuario\documents\codeblocks\datastructure\roteiro i\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Lista.cpp"
+
+1504537335 c:\users\usuario\documents\codeblocks\datastructure\roteiro i\lista.cpp
+	"Lista.h"
+
+1504534730 c:\users\usuario\documents\codeblocks\datastructure\roteiro i\lista.h
+	"Celula.h"
+
+1504269488 c:\users\usuario\documents\codeblocks\datastructure\roteiro i\celula.h
+
