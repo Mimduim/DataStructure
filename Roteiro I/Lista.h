@@ -7,17 +7,21 @@ struct Lista
     Celula* pesquisar(int v);
     Lista unirListaOrdem (Lista lista);
     Lista intersecLista (Lista lista);
-
-    void nElementos();
+    Lista ordenarLista (Lista lista);
+    Lista intercalarListas (Lista lista);
     void inicializar();
-    void inserirAoFinal(int elemento);
-    void inserirNoInicio(int elemento);
-    void unirLista(Lista lista);
-    void clearList();
-    bool existeElemento(int elemento);
-    bool vazia();
     void removeElemento (int elemento);
     bool removerInicio();
+    int nElementos();
+    bool vazia();
+
+    void inserirAoFinal(int elemento);
+    void inserirNoInicio(int elemento);
+    Lista unirLista(Lista lista);
+    void clearList();
+    bool existeElemento(int elemento);
+
+
     bool removerFinal();
     void insereOrdem(int elemento);
     void imprimir();

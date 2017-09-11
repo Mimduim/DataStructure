@@ -42,7 +42,7 @@ void Lista::inserirNoInicio(int elemento)
     nova->prox = aux;
 }
 
-void Lista::nElementos()
+int Lista::nElementos()
 {
     int count = 0;
     Celula* aux = primeiro->prox;
@@ -52,7 +52,7 @@ void Lista::nElementos()
         count++;
         aux = aux->prox;
     }
-    std::cout<< "\nLista possui " << count << " elementos.\n";
+    return count;
 
 }
 
@@ -108,26 +108,27 @@ void Lista::insereOrdem(int elemento)
 
 }
 
-void Lista::unirLista(Lista lista)
+Lista Lista::unirLista(Lista lista)
 {
-
+    Lista listaProduto;
+    listaProduto = lista;
     Celula* aux = primeiro;
-    Celula* aux2 = lista.primeiro;
+    Celula* aux2 = listaProduto.primeiro;
 
     while(aux->prox != primeiro)
     {
         aux = aux->prox;
     }
-    while(aux2->prox != lista.primeiro)
+    while(aux2->prox != listaProduto.primeiro)
     {
         aux2 = aux2->prox;
     }
 
 
-    aux->prox = lista.primeiro->prox;
+    aux->prox = listaProduto.primeiro->prox;
     aux2->prox = primeiro;
 
-
+    return listaProduto;
 }
 
 Lista Lista::unirListaOrdem(Lista lista)
@@ -202,7 +203,7 @@ void Lista::removeElemento(int elemento)
     }
     else
     {
-        while(atual != NULL)
+        while(atual != primeiro)
         {
             if(atual->valor == elemento)
             {
@@ -275,4 +276,42 @@ void Lista::imprimir()
     std::cout<<"]\n";
 }
 
+Lista Lista::intercalarListas(Lista lista)
+{
+    Lista listaProduto;
+    listaProduto.inicializar();
+    Celula *aux = primeiro->prox;
+    Celula *aux2 = lista.primeiro->prox;
+
+
+
+
+
+
+}
+
+
+Lista Lista::ordenarLista(Lista lista)
+{
+    int size = lista.nElementos();
+    int j,i;
+    Celula* aux;
+    Celula* auxI = lista.primeiro->prox;
+    Celula* auxJ= aux->prox;
+
+    for (i = 0; i < size; i++)
+    {
+        for (j = i + 1; j < size; j++)
+        {
+            if (auxI->valor > auxJ->valor)
+            {
+                aux = auxI;
+                auxI = auxJ;
+                auxJ = aux;
+            }
+        }
+    }
+
+    return lista;
+}
 
